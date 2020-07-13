@@ -1,25 +1,60 @@
 import React from 'react';
-import { withStyles, makeStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
-import Tooltip from '@material-ui/core/Tooltip';
 import Typography from '@material-ui/core/Typography';
 import { connect } from 'react-redux';
+import { select } from '../../store/catagories';
+import Card from '@material-ui/core/Card';
+import CardActionArea from '@material-ui/core/CardActionArea';
+import CardActions from '@material-ui/core/CardActions';
+import CardContent from '@material-ui/core/CardContent';
+import CardMedia from '@material-ui/core/CardMedia';
+import { add } from '../../store/cart'
 
-const LightTooltip = withStyles((theme) => ({
-    tooltip: {
-      backgroundColor: theme.palette.common.white,
-      color: 'rgba(0, 0, 0, 0.87)',
-      boxShadow: theme.shadows[1],
-      fontSize: 11,
+
+const useStyles = makeStyles({
+    root: {
+      maxWidth: 345,
     },
-  }))(Tooltip);
+    media: {
+      height: 140,
+    },
+  });
+
 const Main = (props) => {
+    const classes = useStyles();
     return (
      props.products.map(ele=>{
          return(
-        <LightTooltip title="Add">
-        <Button>{ele.name} {ele.category} {ele.price}</Button>
-        </LightTooltip>
+            <Card className={classes.root}>
+            <CardActionArea>
+              <CardMedia
+                className={classes.media}
+                image="/static/images/cards/contemplative-reptile.jpg"
+                title="Contemplative Reptile"
+              />
+              <CardContent>
+                <Typography gutterBottom variant="h5" component="h2">
+                {ele.name}
+                </Typography>
+                <Typography variant="body2" color="textSecondary" component="p">
+                  Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
+                  across all continents except Antarctica
+                </Typography>
+              </CardContent>
+            </CardActionArea>
+            <CardActions>
+              <Button size="small" color="primary"  onClick={() => props.add(ele)}>
+                Add To Cart
+              </Button>
+              <Button size="small" color="primary">
+                View Details
+              </Button>
+            </CardActions>
+          </Card>    
+        // <LightTooltip title="Add">
+        // <Button>{ele.name} {ele.category} {ele.price}</Button>
+        // </LightTooltip>
          )
      })
     );
@@ -31,6 +66,6 @@ const Main = (props) => {
     return { products: state2 };
   };
 
-
-  export default connect(mapStateToProps)(Main);
+  const mapDispatchToProps = { select,add };
+  export default connect( mapStateToProps ,mapDispatchToProps)(Main);
 

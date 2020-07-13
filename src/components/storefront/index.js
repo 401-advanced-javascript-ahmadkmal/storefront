@@ -1,10 +1,13 @@
 import React from 'react';
-import { withStyles, makeStyles } from '@material-ui/core/styles';
+import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import Tooltip from '@material-ui/core/Tooltip';
-import Typography from '@material-ui/core/Typography';
 import { connect } from 'react-redux';
 import { select } from '../../store/catagories';
+
+
+
+
 
 const LightTooltip = withStyles((theme) => ({
     tooltip: {
@@ -15,12 +18,13 @@ const LightTooltip = withStyles((theme) => ({
     },
   }))(Tooltip);
 const Main = (props) => {
+  
     return (
      props.categories.map(ele=>{
-         return(
-        <LightTooltip title={ele.name} onClick={() => props.select(ele.name)} >
-        <Button>{ele.name}</Button>
-        </LightTooltip>
+         return(    
+            <LightTooltip title={ele.name} onClick={() => props.select(ele.name)} >
+            <Button>{ele.name}</Button>
+            </LightTooltip>
          )
      })
     );
