@@ -10,8 +10,11 @@
     "react-redux": "^7.2.0",
     "react-scripts": "3.4.1",
     "redux": "^4.0.5",
-    "redux-devtools-extension": "^2.13.8"
+    "redux-devtools-extension": "^2.13.8",
+    "main": "src/index.js"
   },
+  
+
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
@@ -24,14 +27,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ahmadkmal/resty.git"
+    "url": "git+https://github.com/ahmadkmal/storefront.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/ahmadkmal/resty/issues"
+    "url": "https://github.com/ahmadkmal/storefront/issues"
   },
-  "homepage": "https://ahmadkmal.github.io/resty/",
+  "homepage": "https://ahmadkmal.github.io/storefront/",
   "browserslist": {
     "production": [
       ">0.2%",
