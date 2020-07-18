@@ -30,7 +30,7 @@ const Main = (props) => {
             <CardActionArea>
               <CardMedia
                 className={classes.media}
-                image="/static/images/cards/contemplative-reptile.jpg"
+                image={ele.img}
                 title="Contemplative Reptile"
               />
               <CardContent>
